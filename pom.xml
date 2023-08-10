@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.tpe</groupId>
+    <artifactId>Hibernate</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <hibernate.version>5.6.8.Final</hibernate.version>
+        <!-- hibernate.version değişkeni oluşturduk değeri 5.6.8.Final olarak tanımladık. Bu değişkeni dependencies içerisinde
+        kullanabilmek için dependecy kısmında hibernate in version tagı içerisine
+        <version>${hibernate.version}</version> değişken ismini çağırıyoruz.-->
+        <postgresql.connector.version>42.5.1</postgresql.connector.version>
+    </properties>
+
+    <!-- pom.xml dosyası içerisinde kütüphanelerimizi dependencies olarak ekleyip
+    kütüphanelerimizin yönetimini sağlayabiliriz.-->
+    <!-- Büyük projelerde dependecy tag i kalabalık olabilir. Bu durumda kütühanelerin version kontrolü zorlaşabilir.
+     Kontrolü kolaylaştırmak için properties tag i içerisinde yeni bir değişken(tag) oluşturacaz.
+     Tag ismi <değişkenAdı> şeklinde olmalıdır. Tag içerisine kütüphane versiyonu yazılır ve tag kapatılır.-->
+
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${postgresql.connector.version}</version>
+        </dependency>
+
+    </dependencies>
+</project>
