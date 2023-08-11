@@ -10,43 +10,47 @@ public class RunnerSave01 {
 
         Student01 student01 = new Student01();
         student01.setId(1001);
-        student01.setName("Ummü Umare");
-        student01.setGrade(98);
-        student01.setAge(25);
+        student01.setName("Emircan");
+        student01.setGrade(99);
+        student01.setAge(21);
 
-        Student01 student2=new Student01();
-        student2.setId(1002);
-        student2.setName("Benna");
-        student2.setGrade(99);
-        student2.setAge(30);
+        Student01 student02 = new Student01();
+        student02.setId(1002);
+        student02.setName("Ali");
+        student02.setGrade(99);
+        student02.setAge(30);
 
-        Student01 student3=new Student01();
-        student3.setId(1003);
-        student3.setName("Hasan");
-        student3.setGrade(95);
-        student3.setAge(30);
+        Student01 student03 = new Student01();
+        student03.setId(1003);
+        student03.setName("Can");
+        student03.setGrade(95);
+        student03.setAge(30);
 
-        //hibernate.cfg.xml dosyamızdaki bilgilere ve Student01 classındaki annotasyonalara göre konfigürasyon yapılır.
-        Configuration configuration=new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(Student01.class);
+        // hibernate.cfg.xml dosyamızdaki bilgilere ve Student01 classındaki annotasyonalara göre konfigürasyon yapılır.
+        Configuration configuration = new Configuration().configure("hibernate.cfg.xml").addAnnotatedClass(Student01.class);
+        // addAnnotatedClass ile Entity classımızı Hibernate e gösteriyoruz.
+        // Hibernate'in bir Configuration Class'ı var. Bu class içerisinde configure methodu kullanarak configuration dosyasının ismini belirtiyorum.
+        // Bu dosyayı okuyup ayarları uygulayacak. addAnnotatedClass() methodu Student01.class classtaki anatasyonları okumasını sağlıyor.
 
-        //tüm uygulamada sadece bir tane sf kullanılır. fakat farklım işlemller için birden fazla session açılabilir.
-        SessionFactory sf =configuration.buildSessionFactory();//DB ile ilgili işlemlerin yönetimini sağlar.
-        Session session =sf.openSession();//DB de CRUD op. için ve sorguları çalıştırmak için metodlar içerir
-        //hibernate auto-commit:false
-        Transaction tx =session.beginTransaction();//DB de bir transaction başlatır
+        // SessionFactory = Database ile ilgili işlemlerimizi yönetmemizi sağlayan bir interface'tir.
+        // Tüm uygulamada sadece bir tane sf kullanılır. fakat farklı işlemler için birden fazla session açılabilir.
+        SessionFactory sf = configuration.buildSessionFactory(); //DB ile ilgili işlemlerin yönetimini sağlar. buildSessionFactory() Session Factory oluşturur.
+        Session session = sf.openSession(); //DB de CRUD op. için ve sorguları çalıştırmak için metodlar içerir
 
-        //INSERT INTO ...
-        session.persist(student01);
-        session.persist(student2);
-        session.persist(student3);
+        // Databasede yapmış olduğumuz en küçük işlem birimine transaction denir.
+        // hibernate auto-commit:false yani her bir işlem otomatik aktif olmuyor.
+        Transaction tx = session.beginTransaction(); // DB de bir transaction başlatır
 
+        // INSERT INTO ...
+        //session.persist(student01);
+        session.persist(student02);
+        //session.persist(student03);
         // persist => Kalıcı hale getir
-        tx.commit();
-        session.close();
-        sf.close();
 
 
-
+        tx.commit(); // işlem ve değişikliklerimizi kalıcı hale getirmek için transaction commit yaparız.
+        session.close(); // db bağlanma işlemleri geçekleştirdikleri çin işlemcide ve memoryde kaynak ayrılır.
+        sf.close(); // Kaynakları serbest bırakmak için close() işlemi yapılır.
 
     }
 }

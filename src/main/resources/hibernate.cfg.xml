@@ -23,6 +23,7 @@
 
         <!-- ddl.auto create ise uygulama her çalıştırıldığında schema yeniden oluşturulur.
              update: schema silinmez değişiklik var ise güncellenir.
+             create: schema silinir ve yeniden oluşturulur.
              create-drop: schemanızı uygulama çalıştırıldığında oluşturuyor, sonlandığında schema siliniyor.
              validate: schema'yı validate yapıyor.
              none: yukarıdakilerin hiç birisini yapmıyor.
