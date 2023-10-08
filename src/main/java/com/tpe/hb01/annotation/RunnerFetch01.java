@@ -68,9 +68,9 @@ public class RunnerFetch01 {
 
         // HQL sorgusunda ALIAS(SQL de Takma isim için kulanırdık) kullanalım, ismi 'Ali' olan kaydın sadece id ve name ini yazdıralım.
 
-        String hql3="SELECT s.id, s.name FROM Student01 s WHERE s.name='Ali'";
+        String hql3 = "SELECT s.id, s.name FROM Student01 s WHERE s.name='Ali'";
 
-        Object[] studentAli= (Object[]) session.createQuery(hql3).uniqueResult(); // Geriye [id, name] gelecek sadece:
+        Object[] studentAli = (Object[]) session.createQuery(hql3).uniqueResult(); // Geriye [id, name] gelecek sadece:
         System.out.println(Arrays.toString(studentAli));
 
         tx.commit();

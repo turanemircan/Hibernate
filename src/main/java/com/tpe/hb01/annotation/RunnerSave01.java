@@ -38,7 +38,7 @@ public class RunnerSave01 {
         Session session = sf.openSession(); //DB de CRUD op. için ve sorguları çalıştırmak için metodlar içerir
 
         // Databasede yapmış olduğumuz en küçük işlem birimine transaction denir.
-        // hibernate auto-commit:false yani her bir işlem otomatik aktif olmuyor.
+        // hibernate auto-commit:false yani her bir işlem otomatik aktif olmuyor. Bundan dolayı her bir değişiklik transaction sayesinde yaparız.
         Transaction tx = session.beginTransaction(); // DB de bir transaction başlatır
 
         // INSERT INTO ...
