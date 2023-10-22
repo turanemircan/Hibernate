@@ -6,7 +6,7 @@ import javax.persistence.*;
 @Table(name = "t_student02")
 public class Student02 {
 
-    @Id//entity annotasyonu kullanıldığında kullanımı zorunludur, PK sütununun belirlenmesini sağlar
+    @Id // entity annotasyonu kullanıldığında kullanımı zorunludur, PK sütununun belirlenmesini sağlar
     private int id;
 
     @Column(name = "std_name", length = 100, nullable = false, unique = true)//opsiyonel
